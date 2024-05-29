@@ -1,0 +1,20 @@
+{% extends "global/base.html" %}
+
+{% block conteudo %}
+    <div class= "container">
+        <h1>Nova Tarefa</h1>
+        <form action="{{ form_action }}" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="mb-3">
+                <label class = "form-label" for= "{{field.id_for_label}}">
+                    {{ field.label }}
+                </label>
+                {{ field }}
+            </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary">Adicionar</button>
+            <a href="{% url 'index' %}" class="btn btn-warning">Voltar</a>
+        </form>
+    </div>
+{% endblock conteudo %}
